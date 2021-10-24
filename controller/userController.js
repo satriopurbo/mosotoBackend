@@ -71,7 +71,70 @@ class Controller{
 
     static update(req,res){
         const {nama,alamat,role}= req.body
-        
+        user.update({nama,alamat,role},{
+            where:{
+                id:req.dataUsers.id
+            }
+        })
+        .then(data=>{
+            res.status(200).json({ status: 200, message: "sukses"})
+        })
+        .catch(err=>{
+            res.status(500).json({ status: 500, message: "gagal", data: err})
+        })
+
+    }
+
+    static profil(req,res){
+        user.findAll({where:{
+            id:req.dataUsers.id
+        }})
+        .then(data=>{
+            res.status(200).json({ status: 200, message: "sukses",data})
+        })
+        .catch(err=>{
+            res.status(500).json({ status: 500, message: "gagal", data: err})
+        })
+    }
+
+    static detailsById(req,res){
+        const{id}=req.params
+        user.findAll({where:{
+            id:id
+        }})
+        .then(data=>{
+            res.status(200).json({ status: 200, message: "sukses",data})
+        })
+        .catch(err=>{
+            res.status(500).json({ status: 500, message: "gagal", data: err})
+        })
+    }
+
+    static delete(req,res){
+        const {id}= req.body
+        user.findAll({
+            where:{
+                id:id
+            }
+        })
+        .then(hasil=>{
+            if(hasil.username="puka"){
+                res.status(200).json({ status: 200, message: "terlalu Imba, tidak bisa di delete"})
+            }
+            else{
+                user.destroy({
+                    where:{
+                        id:id
+                    }
+                })
+                .then(data=>{
+                    res.status(200).json({ status: 200, message: "sukses",data})
+                })
+                .catch(err=>{
+                    res.status(500).json({ status: 500, message: "gagal", data: err})
+                })
+            }
+        })
     }
 }
 
