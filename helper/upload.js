@@ -11,6 +11,6 @@ const storage = multer.diskStorage({
 
 const upload=multer({
     storage:storage
-}).fields([{ name: 'file1'}])
+}).fields([{ name: 'file1',name: 'file2',name: 'file3',name: 'file4',name: 'file5'}])
 
 module.exports = upload
