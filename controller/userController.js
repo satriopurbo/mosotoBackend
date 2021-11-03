@@ -21,7 +21,13 @@ class Controller{
 
 
     static register(req,res){
-        const {username,password,nama,alamat,role}= req.body
+        const {username,password,nama,alamat,role,email,noHp}= req.body
+        let f1=""
+        if(req.files){
+            if(req.files.file1){
+                f1 = req.files.file1[0].filename
+            }
+        }
         let  encryptedPassword = bcrypt.hashPassword(password)
         user.findAll({
             where:{
@@ -33,7 +39,7 @@ class Controller{
             }
             else{
                 
-                user.create({username,password:encryptedPassword,nama,role,alamat}, {returning: true})
+                user.create({username,password:encryptedPassword,nama,role,alamat,email,noHp,foto:f1}, {returning: true})
                 .then(respon =>{
                 res.status(200).json({ status: 200, message: "sukses"})
              })
@@ -69,9 +75,14 @@ class Controller{
         })
     }
 
-    static update(req,res){
-        const {nama,alamat,role}= req.body
-        user.update({nama,alamat,role},{
+    static async update(req,res){
+        if(req.files){
+            if(req.files.file1){
+                await sq.query(`update user SET "foto" ='${req.files.file1[0].filename}' where id = ${req.dataUsers.id}`)
+            }
+        }
+        const {nama,alamat,role,email,noHp}= req.body
+        user.update({nama,alamat,role,email,noHp},{
             where:{
                 id:req.dataUsers.id
             }

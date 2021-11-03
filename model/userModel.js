@@ -21,6 +21,15 @@ const user = sq.define('user',{
     },
     role:{
         type:DataTypes.STRING
+    },
+    email:{
+        type:DataTypes.STRING
+    },
+    noHp:{
+        type:DataTypes.STRING
+    },
+    foto:{
+        type:DataTypes.STRING
     }
 },
 {
