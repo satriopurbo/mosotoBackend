@@ -5,7 +5,7 @@ class Controller{
 
 
     static register(req,res){
-        console.log(req.files)
+        console.log(req.body)
         const{judulKonten,typeKonten,modelKonten,bulkTag}=req.body
         let f1=""
         if(req.files){
@@ -24,8 +24,11 @@ class Controller{
            else{
                konten.create({judulKonten,typeKonten,modelKonten,kreatorId:req.dataUsers.id,gambaKonten:f1})
                .then(hasil2=>{
+                   console.log(hasil2.id)
                    for(let i=0;i<bulkTag.length;i++){
+                    console.log(bulkTag[i].kontenId)
                        bulkTag[i]["kontenId"]=hasil2.id
+                       
                    }
                    poolTags.bulkCreate(bulkTag)
                    .then(hasil3=>{
