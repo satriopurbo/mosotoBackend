@@ -22,7 +22,7 @@ class Controller{
             res.status(200).json({ status: 200, message: "judul sudah ada" })
            }
            else{
-               konten.create({judulKonten,typeKonten,modelKonten,kreatorId:req.dataUsers.id,gambaKonten:f1})
+               konten.create({judulKonten,typeKonten,modelKonten,kreatorId:req.dataUsers.id,gambarKonten:f1})
                .then(hasil2=>{
                    for(let i=0;i<bulkTag.length;i++){
                        bulkTag[i]["kontenId"]=hasil2.id
