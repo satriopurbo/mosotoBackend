@@ -5,7 +5,7 @@ class Controller{
 
 
     static register(req,res){
-        const{judulKonten,typeKonten,modelKonten}=req.body
+        const{judulKonten,typeKonten,modelKonten,bulkTag}=req.body
         let f1=""
         if(req.files){
             if(req.files.file1){
@@ -22,6 +22,18 @@ class Controller{
            }
            else{
                konten.create({judulKonten,typeKonten,modelKonten,kreatorId:req.dataUsers.id,gambaKonten:f1})
+               .then(hasil2=>{
+                   for(let i=0;i<bulkTag.length;i++){
+                       bulkTag[i]["kontenId"]=hasil2.id
+                   }
+                   poolTags.bulkCreate(bulkTag)
+                   .then(hasil3=>{
+                    res.status(200).json({ status: 200, message: "sukses"})
+                   })
+                   .catch(err=>{
+                    res.status(500).json({ status: 500, message: "gagal", data: err})
+                   })
+               })
            }
         })
     }
