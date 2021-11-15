@@ -5,12 +5,12 @@ const storage = multer.diskStorage({
     destination:'./asset/file/',
     filename:function(req,file,cb){
         cb(null,Date.now()+file.originalname)
-        //  console.log(file)
+         //console.log(file)
     }
 })
 
 const upload=multer({
     storage:storage
-}).fields([{ name: 'file1',name: 'file2',name: 'file3',name: 'file4',name: 'file5'}])
+}).fields([{ name: 'file1'},{ name: 'file2'},{ name: 'file3'},{ name: 'file4'},{ name: 'file5'}])
 
 module.exports = upload
