@@ -5,8 +5,8 @@ class Controller{
 
 
     static register(req,res){
-        console.log(req.body)
-        const{judulKonten,typeKonten,modelKonten,bulkTag}=req.body
+        const{judulKonten,typeKonten,modelKonten,bulkTagString}=req.body
+        let bulkTag = JSON.parse(bulkTagString);
         let f1=""
         if(req.files){
             if(req.files.file1){
@@ -26,7 +26,6 @@ class Controller{
                .then(hasil2=>{
                    console.log(hasil2.id)
                    for(let i=0;i<bulkTag.length;i++){
-                    console.log(bulkTag[i].kontenId)
                        bulkTag[i]["kontenId"]=hasil2.id
                        
                    }
