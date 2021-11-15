@@ -5,8 +5,8 @@ class Controller{
 
 
     static register(req,res){
-        console.log(req.files)
-        const{judulKonten,typeKonten,modelKonten,bulkTag}=req.body
+        const{judulKonten,typeKonten,modelKonten,bulkTagString}=req.body
+        let bulkTag = JSON.parse(bulkTagString);
         let f1=""
         if(req.files){
             if(req.files.file1){
