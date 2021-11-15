@@ -3,16 +3,16 @@ const masterTags= require('../model/masterTagsModel')
 class Controller{
 
         static register(req,res){
-            const{namaTags}=req.body
+            const{namamasterTags}=req.body
             masterTags.findAll({where:{
-                namaTags:namaTags
+                namamasterTags:namamasterTags
             }})
             .then(hasil=>{
                 if(hasil.length){
                     res.status(200).json({ status: 200, message: "data sudah ada" });
                 }
                 else{
-                    masterTags.create({namaTags})
+                    masterTags.create({namamasterTags})
                     .then(data=>{
                         res.status(200).json({ status: 200, message: "sukses" });
                     })
@@ -21,16 +21,16 @@ class Controller{
         }
 
         static update(req,res){
-            const{id,namaTags}=req.body
+            const{id,namamasterTags}=req.body
             masterTags.findAll({where:{
-                namaTags:namaTags
+                namamasterTags:namamasterTags
             }})
             .then(hasil=>{
                 if(hasil.length){
                     res.status(200).json({ status: 200, message: "data sudah ada" });
                 }
                 else{
-                    masterTags.update({namaTags},{where:{
+                    masterTags.update({namamasterTags},{where:{
                         id:id
                     }})
                     .then(data=>{
