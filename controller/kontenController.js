@@ -6,6 +6,7 @@ class Controller{
 
     static register(req,res){
         const{judulKonten,typeKonten,modelKonten,bulkTag}=req.body
+        console.log(req.body)
         let f1=""
         if(req.files){
             if(req.files.file1){
