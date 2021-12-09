@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sq =  require('../config/connection');
-const konten=require('./kontenModel')
-const masterTags=require('./masterTagsModel')
+const konten = require('./kontenModel')
+const masterTags = require('./masterTagsModel')
 
 const poolTags = sq.define('poolTags',{
     id:{

@@ -19,7 +19,6 @@ function createSuperUser() {
 createSuperUser()
 class Controller{
 
-
     static register(req,res){
         const {username,password,nama,alamat,role,email,noHp}= req.body
         let f1=""
