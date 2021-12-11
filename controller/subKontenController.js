@@ -29,7 +29,7 @@ class Controller{
                 f1 = req.files.file1[0].filename
             }
         }
-        subKonten.update({judulSubKonten , gambarSubKonten: f1 ,namaGambar ,textKonten , modelSubKonten ,linkSub , nomorSub , kontenId})
+        subKonten.update({judulSubKonten , gambarSubKonten : f1 ,namaGambar ,textKonten , modelSubKonten ,linkSub , nomorSub , kontenId})
                .then(hasil=>{
                     res.status(200).json({ status: 200, message: "sukses"})
                    })

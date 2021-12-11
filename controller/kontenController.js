@@ -31,7 +31,7 @@ class Controller{
                    }
                    poolTags.bulkCreate(bulkTag)
                    .then(hasil3=>{
-                    res.status(200).json({ status: 200, message: "sukses"})
+                    res.status(200).json({ status: 200, message: "sukses", data: hasil2})
                    })
                    .catch(err=>{
                     res.status(500).json({ status: 500, message: "gagal", data: err})

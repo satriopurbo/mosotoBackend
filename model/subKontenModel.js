@@ -20,7 +20,7 @@ const subKonten = sq.define('subKonten',{
     textKonten:{
         type:DataTypes.STRING
     },
-    modelKonten:{
+    tipeSub:{
         type:DataTypes.STRING
     },
     linkSub:{
