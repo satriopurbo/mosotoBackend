@@ -7,6 +7,7 @@ router.post('/register',authentification,Controller.register)
 router.post('/update',authentification,Controller.update)
 router.get('/list',authentification,Controller.list)
 router.get('/detailsById/:id',authentification,Controller.detailsById)
+router.get('/listByKontenId/:id',Controller.listByKontenId)
 router.post('/delete',authentification,Controller.delete)
 
 

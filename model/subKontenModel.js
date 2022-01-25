@@ -18,7 +18,7 @@ const subKonten = sq.define('subKonten',{
         type:DataTypes.STRING
     },
     textKonten:{
-        type:DataTypes.STRING
+        type:DataTypes.TEXT
     },
     tipeSub:{
         type:DataTypes.STRING
@@ -41,4 +41,4 @@ subKonten.belongsTo(konten)
 konten.hasMany(subKonten)
 
 // kontens.sync({ alter: true })
-module.exports = konten
+module.exports = subKonten

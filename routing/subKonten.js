@@ -5,6 +5,7 @@ const upload = require("../helper/upload");
 
 router.post("/register", authentification, upload, Controller.register);
 router.post("/update", authentification, upload, Controller.update);
-router.get("/listByKontenId", authentification, Controller.listByKontenId);
+router.get("/listByKontenId/:kontenId", Controller.listByKontenId);
+router.post("/delete", Controller.delete)
 
 module.exports = router;
